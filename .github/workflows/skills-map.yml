@@ -32,4 +32,5 @@ jobs:
           fi
       - name: Fail PR if map is stale
         if: github.event_name == 'pull_request'
-        run: git diff --exit-code README.md || (echo "Run: python3 scripts/build_index.py" && exit 1)
+        run: |
+          git diff --exit-code README.md || (echo "Run python3 scripts/build_index.py and commit README.md" && exit 1)
